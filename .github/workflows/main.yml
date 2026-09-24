@@ -24,7 +24,3 @@ jobs:
       with:
         name: StormHvH-15MB-DLL
         path: stormhvh.dll
-
-      with:
-        name: StormHvH-15MB-DLL
-        path: stormhvh.dll
