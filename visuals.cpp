@@ -6,8 +6,8 @@
 #include "config.h"
 
 // ============================================================================================
-//               STORMHVH v8.9 - FIXED ANTI-LAG & ANTI-ALIGNMENT VISUALS ENGINE
-//     [ Built-in WorldToScreen Matrix + Bone Sync Lock + 3D Non-La + Dynamic Spread ]
+//               STORMHVH v8.9.5 - FIXED ANTI-ALIGNMENT VISUALS ENGINE (OFFICIAL)
+//     [ Built-in WorldToScreen Matrix + Bone Sync Lock + 3D Non-La + Dynamic Spread Fixed ]
 // ============================================================================================
 
 struct Vector3D { 
@@ -181,25 +181,16 @@ namespace Storm_Visuals {
         // 2. Chạy hiệu ứng súng dính điện sấm sét mượt mà góc nhìn thứ nhất
         storm_chams.RenderFixedElectricChams();
 
-        // 3. Chạy vòng tròn tính toán độ trượt súng ở tâm màn hình (Đã gài bộ lọc chống nhấp nháy)
+        // 3. Chạy vòng tròn tính toán độ trượt súng ở tâm màn hình (SỬA LỖI TÊN HÀM ĐỒNG BỘ ✔️)
         float current_weapon_inaccuracy = 0.012f; 
-        storm_spread_indicator.DrawSpreadCircle(current_weapon_inaccuracy);
+        storm_spread_indicator.DrawAntiFlickerCircle(current_weapon_inaccuracy);
     }
 
     DWORD WINAPI VisualsThread(LPVOID lpParam) {
         while (true) {
             ExecuteVisualsFramework();
-            Sleep(10); // Khóa luồng 10ms để giữ cho máy 8GB RAM không bị quá tải gây sập game
+            Sleep(10); // Khóa luồng 10ms để giữ cho máy 8GB RAM không bị quá tải gây sập game [▲]
         }
         return 0;
     }
 }
-
-
-
-
-
-
-
-
-
