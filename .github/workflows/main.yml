@@ -17,10 +17,14 @@ jobs:
 
     - name: Compile All Files to StormHvH DLL
       run: |
-        cl.exe /LD /O2 /EHsc *.cpp /link /OUT:stormhvh.dll user32.lib kernel32.lib gdi32.lib winmm.lib
+        cl.exe /LD /O2 /EHsc /std:c++17 *.cpp /link /OUT:stormhvh.dll user32.lib kernel32.lib gdi32.lib winmm.lib
         
     - name: Upload DLL Artifact
       uses: actions/upload-artifact@v4
+      with:
+        name: StormHvH-15MB-DLL
+        path: stormhvh.dll
+
       with:
         name: StormHvH-15MB-DLL
         path: stormhvh.dll
